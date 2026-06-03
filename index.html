@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Saber.com</title>
+<style>
+  body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+  }
+  /* Yan menü stil */
+  .sidebar {
+    height: 100vh;
+    width: 150px;
+    background-color: #333;
+    position: fixed;
+    top: 0;
+    left: 0;
+    display: flex;
+    flex-direction: column;
+  }
+  /* Menü öğeleri stil */
+  .menu {
+    padding: 15px;
+    color: white;
+    cursor: pointer;
+    border-bottom: 1px solid #444;
+    text-align: center;
+  }
+  .menu:hover {
+    background-color: #555;
+  }
+  /* İçerik alanı stil */
+  .content {
+    margin-left: 150px;
+    padding: 20px;
+  }
+  /* Sekme başlıkları stil */
+  h2 {
+    margin-top: 0;
+  }
+</style>
+</head>
+<body>
+
+<!-- Yan Menü -->
+<div class="sidebar">
+  <div class="menu" onclick="showContent('gancoy')">Gancoy</div>
+  <div class="menu" onclick="showContent('frost')">Frost King</div>
+  <div class="menu" onclick="showContent('erdo')">Erdo Kamarow</div>
+  <div class="menu" onclick="showContent('sasuke')">Sasuke</div>
+  <div class="menu" onclick="showContent('turco')">Turco</div>
+  <div class="menu" onclick="showContent('ada')">Ada</div>
+</div>
+
+<!-- İçerik alanı -->
+<div class="content" id="content-area">
+  <h2>İsimler Sekmesi</h2>
+  <ul id="name-list">
+    <!-- Rastgele isim burada gösterilecek -->
+  </ul>
+</div>
+
+<script>
+  // Rastgele isimler listesi
+  const isimler = [
+    'Oktay Yıldızcan',
+    'Ahmet Yılmaz',
+    'Mehmet Demir',
+    'Ayşe Kaya',
+    'Fatma Şahin',
+    'Ali Can',
+    'Elif Aydın',
+    'Mustafa Güler',
+    'Selin Tekin',
+    'Kadir Çelik'
+  ];
+
+  // Sayfa yüklendiğinde rastgele ismi göster
+  window.onload = function() {
+    const rastgeleIsim = isimler[Math.floor(Math.random() * isimler.length)];
+    const listUl = document.getElementById('name-list');
+    listUl.innerHTML = '<li>' + rastgeleIsim + '</li>';
+  };
+
+  function showContent(section) {
+    const contentArea = document.getElementById('content-area');
+    switch(section) {
+      case 'gancoy':
+        contentArea.innerHTML = '<h2>Gancoy</h2><ul><li>Gancoy</li></ul>';
+        break;
+      case 'frost':
+        contentArea.innerHTML = '<h2>Frost King</h2><ul><li>Frost King</li></ul>';
+        break;
+      case 'erdo':
+        contentArea.innerHTML = '<h2>Erdo Kamarow</h2><ul><li>Erdo Kamarow</li></ul>';
+        break;
+      case 'sasuke':
+        contentArea.innerHTML = '<h2>Sasuke</h2><ul><li>Sasuke</li></ul>';
+        break;
+      case 'turco':
+        contentArea.innerHTML = '<h2>Turco</h2><ul><li>Turco</li></ul>';
+        break;
+      case 'ada':
+        contentArea.innerHTML = '<h2>Ada</h2><ul><li>Ada</li></ul>';
+        break;
+      default:
+        // Ana isim listesi ve rastgele isim
+        contentArea.innerHTML = '<h2>İsimler Sekmesi</h2><ul id="name-list"></ul>';
+        // Yeniden rastgele isim göster
+        const rastgeleIsim = isimler[Math.floor(Math.random() * isimler.length)];
+        document.getElementById('name-list').innerHTML = '<li>' + rastgeleIsim + '</li>';
+    }
+  }
+</script>
+
+</body>
+</html>
